@@ -1,13 +1,24 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { TaskDto } from './dto/task.dto';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
+  @Serialize(TaskDto)
   create(@Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(createTaskDto);
   }

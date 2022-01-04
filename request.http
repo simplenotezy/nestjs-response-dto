@@ -1,0 +1,8 @@
+### Create new task
+POST http://localhost:3000/tasks
+content-type: application/json
+
+{
+	"name": "Clean the kitchen!",
+	"description": "A description"
+}
