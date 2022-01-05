@@ -7,7 +7,7 @@ export class TaskDto {
   // @Expose()
   // description: string;
 
-  @Expose()
+  @Expose({ name: 'test' })
   get thisIsATest(): string {
     return 'yolo';
   }
